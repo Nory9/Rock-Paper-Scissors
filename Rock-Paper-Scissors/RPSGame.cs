@@ -4,24 +4,24 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Rock_Paper_Scissors
 {
     internal class RPSGame
     {
-       
-        public RPSGame() {
-           
-        }
 
         public void GameFlow() {
             Console.WriteLine(" Wellcome to our RPS game where you can play with AI lets get started!!\n");
+            Console.WriteLine(" please enter your name: ");
+            string name = Console.ReadLine();
+            
             for (int i = 1; i <= 3; i++)
             {
                 Console.WriteLine($" This is round {i}");
-                 round();
+                 round(name);
             }
-        }// \n\n  please enter your name: \n");
+        }
 
         public int PlayerMoves(Player player)
         {
@@ -39,18 +39,13 @@ namespace Rock_Paper_Scissors
 
         public int roundWinner(int playerMove, int aiMove) {
             if (playerMove == aiMove)
-            {
                 return 0;
-            }
-            else {
-                if ((playerMove == 2 && aiMove == 1) || (playerMove == 1 && aiMove == 3) || (playerMove == 3 && aiMove == 2))
-                {
-                    return 1;
-                }
-                else
-                    return -1;
+            if ((playerMove == 2 && aiMove == 1) || (playerMove == 1 && aiMove == 3) || (playerMove == 3 && aiMove == 2))
+                return 1;
 
-            }
+           return -1;
+
+            
         }
 
         public string Answer(int ans) {
@@ -64,12 +59,10 @@ namespace Rock_Paper_Scissors
             return answer;
         }
 
-        public void round() {
+        public void round(string name) {
             Player player = new Player();
-            Console.WriteLine(" please enter your name: ");
-            string name = Console.ReadLine();
-            player.Name = name;
             int n = 0;
+            player.Name = name;
             int aiScore = 0;
             while (n != 3)
             {
