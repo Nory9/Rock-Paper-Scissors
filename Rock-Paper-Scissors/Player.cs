@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rock_Paper_Scissors
 {
-    internal class Player
+    public class Player
     {
         private string _name;
         private int _score;
@@ -24,9 +24,6 @@ namespace Rock_Paper_Scissors
         }
 
         public int playersMove(string move) {
-          //  string move = "";
-          //  Console.WriteLine("please choose a move : Rock , Paper , Scisseor");
-            //move = Console.ReadLine();
             string checked_move= validation(move);
             if (checked_move != "")
             {
